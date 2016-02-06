@@ -9,13 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{_locale}", defaults={"_locale": "en"}, requirements={
+     *     "_locale": "en|fr|de"
+     * })
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ));
+        return $this->render('default/index.html.twig');
     }
 }
