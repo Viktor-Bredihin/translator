@@ -6,3 +6,6 @@ JMSTranslationBundle_ui:
     resource: @JMSTranslationBundle/Controller/
     type:     annotation
     prefix:   /_trans
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
