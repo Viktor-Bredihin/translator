@@ -80,7 +80,7 @@ class Updater
      * @param Config $config
      * @return \JMS\CommandBundle\Translation\ComparisonResult
      */
-    public function getChangeSet(Config $config)
+    public function getChangeSet(\JMS\TranslationBundle\Translation\Config $config)
     {
         $this->setConfig($config);
 
@@ -162,7 +162,7 @@ class Updater
      *
      * @return void
      */
-    public function process(Config $config)
+    public function process(\JMS\TranslationBundle\Translation\Config $config)
     {
         $this->setConfig($config);
 
@@ -248,7 +248,7 @@ class Updater
     /**
      * @param Config $config
      */
-    private function setConfig(Config $config)
+    private function setConfig(\JMS\TranslationBundle\Translation\Config $config)
     {
         $this->config = $config;
 
