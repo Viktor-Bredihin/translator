@@ -79,7 +79,7 @@
                 });
             });
 
-            $('#translate-delete').click(function() {
+            $('.translate-delete').click(function() {
                 var self = this;
 
                 $.ajax(deleteMessagePath + '?id=' + encodeURIComponent($(this).data('id')), {
