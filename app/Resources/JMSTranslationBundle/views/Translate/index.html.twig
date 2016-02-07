@@ -74,15 +74,20 @@
                         $(self).parent().prepend('<div class="alert-message error">Translation could not be saved</div>');
                     },
                     success: function() {
-                        $('#translate-key, #translate-message').val('');
                         location.reload();
-                    },
-                    complete: function() {
-                        var parent = $(self).parent();
-                        $(self).data('timeoutId', setTimeout(function() {
-                            $(self).data('timeoutId', undefined);
-                            parent.children('.alert-message').fadeOut(300, function() { $(this).remove(); });
-                        }, 10000));
+                    }
+                });
+            });
+
+            $('#translate-delete').click(function() {
+                var self = this;
+
+                $.ajax(deleteMessagePath + '?id=' + encodeURIComponent($(this).data('id')), {
+                    type: 'POST',
+                    headers: {'X-HTTP-METHOD-OVERRIDE': 'DELETE'},
+                    data: {'_method': 'DELETE'},
+                    success: function() {
+                        location.reload();
                     }
                 });
             });

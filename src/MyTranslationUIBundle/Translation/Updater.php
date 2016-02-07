@@ -117,6 +117,30 @@ class Updater
      * @param string $format
      * @param string $domain
      * @param string $locale
+     * @param string $id
+     * @param string $trans
+     */
+    public function deleteTranslation($file, $format, $domain, $locale, $id, $trans)
+    {
+        $catalogue = $this->loader->loadFile($file, $format, $locale, $domain);
+        
+        $messages = $catalogue->getDomain($domain)->all();
+        foreach ($messages as $key => $message) {
+            if ($message->getId() == $id) {
+                unset($messages[$key]);
+            }
+        }
+        
+        $catalogue->getDomain($domain)->replace($messages);
+
+        $this->writer->write($catalogue, $domain, $file, $format);
+    }
+
+    /**
+     * @param string $file
+     * @param string $format
+     * @param string $domain
+     * @param string $locale
      * @param string $key
      * @param string $trans
      */
@@ -126,7 +150,7 @@ class Updater
         $message = new Message($key);
         $message->setLocaleString($trans)->setNew(false);
         $catalogue->add($message);
-
+        
         $this->writer->write($catalogue, $domain, $file, $format);
     }
 
