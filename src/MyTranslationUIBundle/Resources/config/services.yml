@@ -1,0 +1,4 @@
+services:
+#    my_translation_ui.example:
+#        class: MyTranslationUIBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

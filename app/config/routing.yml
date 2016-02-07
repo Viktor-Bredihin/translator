@@ -1,9 +1,14 @@
+my_translation_ui:
+    resource: "@MyTranslationUIBundle/Controller/"
+    type:     annotation
+    prefix:   /_trans
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
 JMSTranslationBundle_ui:
-    resource: @JMSTranslationBundle/Controller/
+    resource: ../../vendor/jms/translation-bundle/JMS/TranslationBundle/Controller
     type:     annotation
     prefix:   /_trans
 
