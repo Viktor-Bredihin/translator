@@ -46,13 +46,30 @@ class ApiController
     /**
      * @Route("/configs/{config}/domains/{domain}/locales/{locale}/messages",
      *          name="jms_translation_create_message",
-     *          defaults = {"id" = null},
      *          options = {"i18n" = false})
      * @Method("POST")
      */
     public function createMessageAction(Request $request, $config, $domain, $locale)
     {
-        exit('createMessageAction');
+        $config = $this->configFactory->getConfig($config, $locale);
+
+        $files = FileUtils::findTranslationFiles($config->getTranslationsDir());
+        if (!isset($files[$domain][$locale])) {
+            throw new RuntimeException(sprintf('There is no translation file for domain "%s" and locale "%s".', $domain, $locale));
+        }
+
+        // TODO: This needs more refactoring, the only sane way I see right now is to replace
+        //       the loaders of the translation component as these currently simply discard
+        //       the extra information that is contained in these files
+
+        list($format, $file) = $files[$domain][$locale];
+
+        $this->updater->createTranslation(
+            $file, $format, $domain, $locale, $this->request->request->get('key'),
+            $this->request->request->get('message')
+        );
+
+        return new Response();
     }
 
     /**

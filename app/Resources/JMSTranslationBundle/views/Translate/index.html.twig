@@ -8,6 +8,7 @@
             var updateMessagePath = {{ path("jms_translation_update_message", {"config": selectedConfig, "domain": selectedDomain, "locale": selectedLocale})|json_encode|raw }};
             var createMessagePath = {{ path("jms_translation_create_message", {"config": selectedConfig, "domain": selectedDomain, "locale": selectedLocale})|json_encode|raw }};
             var deleteMessagePath = {{ path("jms_translation_create_message", {"config": selectedConfig, "domain": selectedDomain, "locale": selectedLocale})|json_encode|raw }};
+            var existingMessages = {{ existingMessages|json_encode|raw }};
             
             $('#config select').change(function() {
                 $(this).parent().submit();
@@ -51,6 +52,14 @@
 
             // add new message
             $('#translate-create').click(function() {
+                $('#translate-create-container .error').remove();
+                if (!$('#translate-key').val()) {
+                    $('#translate-key').parent().prepend('<div class="alert-message error">Required</div>');
+                    return false;
+                } else if($('#translate-key').val() in existingMessages) {
+                    $('#translate-key').parent().prepend('<div class="alert-message error">Duplicated</div>');
+                    return false;
+                }
                 var self = this;
 
                 $.ajax(createMessagePath, {
@@ -58,14 +67,15 @@
                     //headers: {'X-HTTP-METHOD-OVERRIDE': 'PUT'},
                     data: {
                         '_method': 'POST',
-                        'key': $(this).closest('#translate-create-container').find('#translate-key').val(),
-                        'message': $(this).closest('#translate-create-container').find('#translate-message').val()
+                        'key': $(self).closest('#translate-create-container').find('#translate-key').val(),
+                        'message': $(self).closest('#translate-create-container').find('#translate-message').val()
                     },
                     error: function() {
                         $(self).parent().prepend('<div class="alert-message error">Translation could not be saved</div>');
                     },
                     success: function() {
-                        $(self).parent().prepend('<div class="alert-message success">Translation was saved.</div>');
+                        $('#translate-key, #translate-message').val('');
+                        location.reload();
                     },
                     complete: function() {
                         var parent = $(self).parent();
