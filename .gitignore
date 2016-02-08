@@ -13,3 +13,6 @@
 
 # translation files
 app/Resources/translations
+
+# node modules
+node_modules
