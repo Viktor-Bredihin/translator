@@ -49,7 +49,11 @@
                         <p>{{ message.desc }}</p>
                     {% endif %}
                 </td>
-                <td><button type="button" data-id="{{ id }}" class="btn danger translate-delete">X</button></td>
+                <td>
+                    {% if count > 1 %}
+                    <button type="button" data-id="{{ id }}" class="btn danger translate-delete">X</button>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
