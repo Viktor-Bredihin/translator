@@ -136,6 +136,24 @@
     </div>
     {% endif %}
 
+    <h2>Create Translation</h2>
+    <table>
+        <thead>
+            <tr>
+                <th width="40%">ID</th>
+                <th width="50%">Translation</th>
+                <th width="5%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="translate-create-container">
+                <td><input type="text" id="translate-key" /></td>
+                <td><textarea id="translate-message" class="span6"{% if isWriteable is sameas(false) %} readonly="readonly"{% endif %}></textarea></td>
+                <td><button type="button" id="translate-create" class="btn success">+</button></td>
+            </tr>
+        </tbody>
+    </table>
+
     <h2>Available Messages</h2>
     
     {% if newMessages is not empty %}

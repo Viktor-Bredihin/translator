@@ -8,12 +8,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr id="translate-create-container">
-                <td><input type="text" id="translate-key" /></td>
-                <td><textarea id="translate-message" class="span6"{% if isWriteable is sameas(false) %} readonly="readonly"{% endif %}></textarea></td>
-                <td></td>
-                <td><button type="button" id="translate-create" class="btn success">+</button></td>
-            </tr>
             {% for id, message in messages %}
             <tr>
                 <td>
