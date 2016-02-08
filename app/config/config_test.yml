@@ -14,3 +14,18 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+security:
+    firewalls:
+        main:
+            http_basic: ~
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:
+                        password: user
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
