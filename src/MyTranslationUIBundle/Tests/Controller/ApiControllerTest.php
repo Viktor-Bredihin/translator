@@ -4,6 +4,9 @@ namespace MyTranslationUIBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * file default.de.xliff has to exist in /app/Resources/translations
+ */
 class ApiControllerTest extends WebTestCase
 {
     /**
