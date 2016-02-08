@@ -55,6 +55,8 @@ Useful commands
 
 * php app/console fos:js-routing:dump (build fos_js_routes.js)
 
+* php app/console translation:extract de --dir=./src/ --output-dir=./app/Resources/translations
+
 DEPLOYMENT INSTRUCTIONS
 ========================
 
@@ -96,6 +98,10 @@ DEPLOYMENT INSTRUCTIONS
 
     $ php app/console doctrine:database:create
     $ php app/console doctrine:schema:update --force
+
+## Create users
+    php bin/console fos:user:create user user@example.com password
+    php bin/console fos:user:create admin admin@example.com password --super-admin
 
 ## Load fixtures:
 

@@ -14,23 +14,22 @@
     </head>
 
     <body>
-        <header>
-            {% block profile %}
-                <div>
-                    {% if is_granted("ROLE_USER") %}
-                        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">Login</a>
-                        <a href="{{ path('fos_user_registration_register') }}">Registration</a>
-                    {% endif %}
+        <header class="container">
+            <div class="row">
+                <div id="profile" class="col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        {% if is_granted("ROLE_USER") %}
+                            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                            <a href="{{ path('jms_translation_index') }}">Translation UI</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">Login</a>
+                            <a href="{{ path('fos_user_registration_register') }}">Registration</a>
+                        {% endif %}
+                    </div>
                 </div>
-            {% endblock %}
+            </div>
         </header>
 
         {% block body %}{% endblock %}
-        
-        {% block javascripts %}
-            <script src="{{ asset('assets/build/js/main.js') }}"></script>
-        {% endblock %}
     </body>
 </html>

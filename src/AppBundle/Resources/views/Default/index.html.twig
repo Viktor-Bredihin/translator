@@ -1,40 +1,61 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            {% trans %}Symfony is great{% endtrans %}
-            {% trans %}Hello friend{% endtrans %}
-            {% trans %}Hello friend1{% endtrans %}
-            {% trans %}Hello friend2{% endtrans %}
-            {% trans %}Hello friend3{% endtrans %}
-            {% trans %}Hello friend4{% endtrans %}
-            {% trans %}Hello friend5{% endtrans %}
-            {% trans %}Hello friend6{% endtrans %}
-            {% trans %}Hello friend7{% endtrans %}
-            {% trans %}Hello friend8{% endtrans %}
-            {% trans %}Hello friend9{% endtrans %}
-            {% trans %}Hello friend10{% endtrans %}
-            {% trans %}Hello friend11{% endtrans %}
-            {% trans %}Hello friend12{% endtrans %}
-            {% trans %}Hello friend13{% endtrans %}
-            {% trans %}Hello friend14{% endtrans %}
-            {% trans %}Hello friend15{% endtrans %}
-            {% trans %}Hello friend16{% endtrans %}
-            {% trans %}Hello friend17{% endtrans %}
-            {% trans %}Hello friend18{% endtrans %}
-            {% trans %}Hello friend19{% endtrans %}
-            {% trans %}Hello friend20{% endtrans %}
-            {% trans %}Hello friend21{% endtrans %}
-            {% trans %}Hello friend22{% endtrans %}
-            {% trans %}Hello friend23{% endtrans %}
-            {% trans %}Hello friend24{% endtrans %}
-            {% trans %}Hello friend25{% endtrans %}
-            {% trans %}Hello friend26{% endtrans %}
-            {% trans %}Hello friend27{% endtrans %}
-            {% trans %}Hello friend28{% endtrans %}
-            {% trans %}Hello friend29{% endtrans %}
-            {% trans %}Hello friend30{% endtrans %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 well">
+                <form role="form" class="form-horizontal" action="" method="post" name="contactform">
+                    <fieldset>
+                        <legend>{{ 'contact.name.form'|trans({}, 'default') }}</legend>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="txt_name" class="control-label">{{ 'contact.name.label'|trans({}, 'default') }}</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" name="txt_name" placeholder="{{ 'contact.name.placeholder'|trans({}, 'default') }}" type="text" value="" />
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="txt_email" class="control-label">{{ 'contact.email.label'|trans({}, 'default') }}</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" name="txt_email" placeholder="{{ 'contact.email.placeholder'|trans({}, 'default') }}" type="text" value="" />
+                                <span class="text-danger"></span> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="txt_subject" class="control-label">{{ 'contact.subject.label'|trans({}, 'default') }}</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" name="txt_subject" placeholder="{{ 'contact.subject.placeholder'|trans({}, 'default') }}" type="text" value="" />
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="txt_msg" class="control-label">{{ 'contact.message.label'|trans({}, 'default') }}</label>
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="txt_msg" rows="4" placeholder="{{ 'contact.message.placeholder'|trans({}, 'default') }}"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input name="submit" type="submit" class="btn btn-primary" value="{{ 'contact.send.button'|trans({}, 'default') }}" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
