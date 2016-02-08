@@ -147,10 +147,10 @@ class Updater
     public function createTranslation($file, $format, $domain, $locale, $key, $trans)
     {
         $catalogue = $this->loader->loadFile($file, $format, $locale, $domain);
-        $message = new Message($key);
+        $message = new Message($key, $domain);
         $message->setLocaleString($trans)->setNew(false);
         $catalogue->add($message);
-        
+
         $this->writer->write($catalogue, $domain, $file, $format);
     }
 
